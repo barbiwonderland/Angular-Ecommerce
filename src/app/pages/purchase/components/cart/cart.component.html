@@ -1,0 +1,42 @@
+<div *ngIf="cartItems.length>0 ;else noProducts" class="MAIN">
+  <table *ngIf="cartItems.length>0" mat-table [dataSource]="cartItems" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Cantidad">
+      <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+      <td mat-cell *matCellDef="let element">{{element.quantity}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="Image">
+      <th mat-header-cell *matHeaderCellDef> Imagen </th>
+      <td mat-cell *matCellDef="let element"><img src={{element.image}} height="50px" width="50px" alt=""> </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Price">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let element"> ${{element.price}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Remove">
+      <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteItem(element)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  <h3 style="text-align:center">TOTAL: ${{cartTotals}}</h3>
+
+</div>
+<ng-template style="text-align: center;" #noProducts>
+ No tiene productos en el Carrito
+</ng-template>

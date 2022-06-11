@@ -1,0 +1,23 @@
+footer {
+  display: flex;
+  justify-content: flex-end;
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  margin-top: 10px;
+  bottom: 0;
+  background-color: black;
+  color: white;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  font-weight: bold;
+}
+span {
+  letter-spacing: 2px;
+  margin-right: 20px;
+  align-self: center;
+}

@@ -1,0 +1,9 @@
+.mat-toolbar{
+    justify-content: space-between!important;
+}
+.cart-icon{
+    font-size: 30px;
+}
+.cart-icon:hover{
+font-size: 35px;
+}

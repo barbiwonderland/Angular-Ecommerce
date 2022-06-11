@@ -1,0 +1,29 @@
+<div *ngIf="products">
+  <div class="group-cards">
+    <div *ngFor=" let x of products" >
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{x.title | slice:0:20}}</mat-card-title>
+          <mat-card-subtitle>{{x.category}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{x.image}} alt="Photo of a Shiba Inu">
+        <mat-card-content [ngClass]="{'limitTextHeight': isReadMore}">
+          <p>
+            {{x.description}}
+          </p>
+          <button type="button" (click)="showText()">
+            {{ isReadMore ? 'Read More': 'Read Less' }}
+          </button>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="addToCart(x)">
+            <mat-icon class="addCart" aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+
+  </div>
+</div>
