@@ -37,6 +37,10 @@
   <h3 style="text-align:center">TOTAL: ${{cartTotals}}</h3>
 
 </div>
-<ng-template style="text-align: center;" #noProducts>
- No tiene productos en el Carrito
+<ng-template #noProducts>
+  <div class="text-center">
+    <h3 style="margin-top: 10px;"> No tiene productos en el Carrito</h3>
+  </div>
+  <button class="AddBtn text-center" routerLink="/">Agregar</button>
+
 </ng-template>

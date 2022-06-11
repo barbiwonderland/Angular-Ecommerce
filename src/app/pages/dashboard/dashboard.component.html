@@ -1,6 +1,6 @@
 <div *ngIf="products">
   <div class="group-cards">
-    <div *ngFor=" let x of products" >
+    <div *ngFor=" let x of products">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -8,13 +8,14 @@
           <mat-card-subtitle>{{x.category}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src={{x.image}} alt="Photo of a Shiba Inu">
-        <mat-card-content [ngClass]="{'limitTextHeight': isReadMore}">
+        <mat-card-content>
           <p>
-            {{x.description}}
+            {{x.description | slice:0:100}}...
           </p>
-          <button type="button" (click)="showText()">
+          <!-- &AGREGAR BOTON MOSTRAR MENOS O MÁS DESCRIPCIÓN QUE APLIQUE UNICAMENTE AL ELEMENTO SELECCIONADO -->
+          <!-- <button type="button" (click)="showText()">
             {{ isReadMore ? 'Read More': 'Read Less' }}
-          </button>
+          </button> -->
         </mat-card-content>
         <mat-card-actions>
           <button mat-button (click)="addToCart(x)">

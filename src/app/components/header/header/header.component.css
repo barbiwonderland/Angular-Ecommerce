@@ -1,9 +1,24 @@
-.mat-toolbar{
-    justify-content: space-between!important;
+.mat-toolbar {
+  justify-content: space-between !important;
+  background-color: black;
 }
-.cart-icon{
-    font-size: 30px;
+.cart-icon {
+  font-size: 30px;
 }
-.cart-icon:hover{
-font-size: 35px;
+.cart-icon:hover {
+  font-size: 35px;
+}
+.quantityCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+  font-size: 15px;
+  color: white;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
