@@ -44,7 +44,7 @@ export class CartService {
     }
     this.productList$.next(this.items);
   }
- IcreaseCart(x: ICart) {
+  IcreaseCart(x: ICart) {
     const itemIndex = this.items.findIndex((item) => item.id === x.id);
     this.items[itemIndex].quantity += 1;
   }
@@ -52,6 +52,8 @@ export class CartService {
     this.items = [];
     return this.items;
   }
+
+  /* Hacer reactivo para que se muestren los cambios */
   getTotals() {
     return this.items.reduce(
       (cartTotal, cartItem) => {

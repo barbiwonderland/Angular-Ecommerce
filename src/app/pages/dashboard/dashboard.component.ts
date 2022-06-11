@@ -30,5 +30,6 @@ export class DashboardComponent implements OnInit {
 
   addToCart(product: ICart) {
     this.cartservice.addToCart(product);
+    /* Agregar mensaje al usuario que agrego al carrito */
   }
 }
