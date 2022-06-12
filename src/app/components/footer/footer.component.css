@@ -3,7 +3,7 @@ footer {
   justify-content: flex-end;
   height: 40px;
   width: 100%;
-  position: sticky;
+  position:fixed;
   bottom: 0;
   background-color: black;
   color: white;
