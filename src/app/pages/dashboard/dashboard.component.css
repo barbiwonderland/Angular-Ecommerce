@@ -8,14 +8,14 @@
   height: 100%;
   align-items: center;
 }
-.mat-card  {
+.mat-card {
   width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: white;
-  color:black;
+  color: black;
   text-align: center;
   height: 70vh;
   margin: 10px;
@@ -30,8 +30,8 @@
   margin: 0 auto;
   flex-wrap: wrap;
 }
-.mat-card:hover{
-  border:solid black 1px;
+.mat-card:hover {
+  border: solid black 1px;
 }
 .mat-card-heade {
   justify-content: center;
@@ -45,9 +45,16 @@
   height: 80px;
   overflow: hidden;
 }
-.addCart{
+.addCart {
   font-size: 30px;
 }
-.addCart:hover{
-zoom: 1.1;
+.addCart:hover {
+  zoom: 1.1;
+}
+
+button,
+button:focus, button:active{
+  border: none;
+  background-color: transparent;
+  outline: none;
 }

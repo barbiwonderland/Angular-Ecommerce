@@ -14,6 +14,5 @@ export class HeaderComponent implements OnInit {
     this.service.getiItem$().subscribe((res) => {
       this.totals = res.reduce((acc, cur) => (acc = acc + cur.quantity),0);
     });
-    console.log('totals', this.totals);
   }
 }
