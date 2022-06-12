@@ -7,7 +7,7 @@
   </div>
 
   <div class="group-cards">
-    <div *ngFor=" let x of productsFiltered">
+    <div *ngFor=" let x of productsFiltered;let i = index">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -16,19 +16,27 @@
         </mat-card-header>
         <img mat-card-image src={{x.image}} alt="Photo of a Shiba Inu">
         <mat-card-content>
-          <p>
-            {{x.description | slice:0:100}}...
-          </p>
-          <!-- &AGREGAR BOTON MOSTRAR MENOS O MÁS DESCRIPCIÓN QUE APLIQUE UNICAMENTE AL ELEMENTO SELECCIONADO -->
-          <!-- <button type="button" (click)="showText()">
-            {{ isReadMore ? 'Read More': 'Read Less' }}
-          </button> -->
+          <div class="text-center"> <button mat-button (click)="showText(x)">
+              {{ !x.readMore ? 'Read More..': 'Read Less' }}</button>
+          </div>
+          <div *ngIf="!x.readMore; else more">
+
+            <p> {{(x.description | slice:0:100 )}}...</p>
+
+            <mat-card-actions>
+              <p>${{x.price}}</p>
+              <button (click)="addToCart(x)">
+                <mat-icon class="addCart" aria-hidden="false" aria-label="Example home icon">add_shopping_cart
+                </mat-icon>
+              </button>
+            </mat-card-actions>
+
+          </div>
+
+          <ng-template #more>
+
+            {{(x.description )}}</ng-template>
         </mat-card-content>
-        <mat-card-actions>
-          <button (click)="addToCart(x)">
-            <mat-icon class="addCart" aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
-          </button>
-        </mat-card-actions>
       </mat-card>
 
     </div>

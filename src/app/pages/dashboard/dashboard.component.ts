@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ICart } from 'src/app/models/ICart';
-import { IProducts } from 'src/app/models/IProduct';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/cart.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -19,6 +18,7 @@ export class DashboardComponent implements OnInit {
   products: any;
   categories: any = [];
   productsFiltered: any[] = [];
+  readMore: boolean= false;
 
   ngOnInit() {
     this.apiservice.getUsers().subscribe((data) => {
@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
       this.categories = [...new Set(this.categories)];
     });
   }
-  isReadMore = true;
   FilterByCategory(x: string) {
     if (x === 'all') {
       this.productsFiltered = this.products;
@@ -40,12 +39,14 @@ export class DashboardComponent implements OnInit {
       );
     }
   }
-  showText() {
-    this.isReadMore = !this.isReadMore;
-  }
+showText(x:any){
+  x.readMore = !x.readMore
+}
 
   addToCart(product: ICart) {
     this.cartservice.addToCart(product);
     this.snackb.openSnackBar('Producto agregado correctamente', 'OK');
   }
+
+
 }
