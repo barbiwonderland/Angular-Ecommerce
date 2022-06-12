@@ -1,5 +1,5 @@
+import { IProducts } from 'src/app/models/IProduct';
 import { ICart } from './../models/ICart';
-import { IProducts } from './../models/IProduct';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -8,19 +8,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartService {
   items: ICart[] = [];
-  private productList$ = new BehaviorSubject<any[]>([]);
+  private productList$ = new BehaviorSubject<ICart[]>([]);
   constructor() {}
   /* . . . */
   // OBSERVABLES
   //get product data
-  getiItem$(): Observable<any[]> {
+  getiItem$(): Observable<ICart[]> {
     return this.productList$.asObservable();
   }
   //set product data
-  setItem$(products: any) {
+  setItem$(products: ICart[]) {
     this.productList$.next(products);
   }
-  addToCart(products: ICart) {
+  addToCart(products: IProducts) {
     const itemIndex = this.items.findIndex((item) => item.id === products.id);
     if (itemIndex >= 0) {
       this.items[itemIndex].quantity += 1;

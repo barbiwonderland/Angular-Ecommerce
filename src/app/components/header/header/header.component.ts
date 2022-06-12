@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  totals: any;
+  totals: number = 0;
   constructor(private service: CartService) {}
 
   ngOnInit() {
     this.service.getiItem$().subscribe((res) => {
-      this.totals = res.reduce((acc, cur) => (acc = acc + cur.quantity),0);
+      this.totals = res.reduce((acc, cur) => (acc = acc + cur.quantity), 0);
     });
   }
 }

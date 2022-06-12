@@ -1,3 +1,4 @@
+import { IProducts } from 'src/app/models/IProduct';
 import { Component, OnInit } from '@angular/core';
 import { ICart } from 'src/app/models/ICart';
 import { ApiService } from 'src/app/services/api.service';
@@ -15,17 +16,17 @@ export class DashboardComponent implements OnInit {
     private cartservice: CartService,
     private snackb: SnackbarService
   ) {}
-  products: any;
-  categories: any = [];
+  products: IProducts[] = [];
+  categories: string[] = [];
   productsFiltered: any[] = [];
-  readMore: boolean= false;
+  readMore: boolean = false;
 
   ngOnInit() {
-    this.apiservice.getUsers().subscribe((data) => {
+    this.apiservice.fecthProducts().subscribe((data) => {
       console.log(data);
       this.products = data;
       this.productsFiltered = data;
-      this.categories = this.products.map((x: any) => x.category);
+      this.categories = this.products.map((x: IProducts) => x.category);
       this.categories = [...new Set(this.categories)];
     });
   }
@@ -35,18 +36,16 @@ export class DashboardComponent implements OnInit {
     } else {
       this.productsFiltered = this.products;
       this.productsFiltered = this.productsFiltered.filter(
-        (item: any) => item.category === x
+        (item: IProducts) => item.category === x
       );
     }
   }
-showText(x:any){
-  x.readMore = !x.readMore
-}
+  showText(x: any) {
+    x.readMore = !x.readMore;
+  }
 
-  addToCart(product: ICart) {
+  addToCart(product: IProducts) {
     this.cartservice.addToCart(product);
     this.snackb.openSnackBar('Producto agregado correctamente', 'OK');
   }
-
-
 }
