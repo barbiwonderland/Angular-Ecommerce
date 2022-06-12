@@ -1,6 +1,13 @@
-<div *ngIf="products">
+<div *ngIf="products ;else spin">
+  <div class="text-center mt-2">
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip (click)="FilterByCategory('all')" color="primary" selected>All</mat-chip>
+      <mat-chip (click)="FilterByCategory(x)" *ngFor="let x of categories" color="primary" selected>{{x}}</mat-chip>
+    </mat-chip-list>
+  </div>
+
   <div class="group-cards">
-    <div *ngFor=" let x of products">
+    <div *ngFor=" let x of productsFiltered">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -18,7 +25,7 @@
           </button> -->
         </mat-card-content>
         <mat-card-actions>
-          <button  (click)="addToCart(x)">
+          <button (click)="addToCart(x)">
             <mat-icon class="addCart" aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
           </button>
         </mat-card-actions>
@@ -27,4 +34,8 @@
     </div>
 
   </div>
+
 </div>
+<ng-template #spin>
+  <app-spinner></app-spinner>
+</ng-template>

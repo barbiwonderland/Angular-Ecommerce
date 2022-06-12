@@ -11,6 +11,9 @@ import { ApiService } from './services/api.service';
 import { HttpClientModule } from "@angular/common/http";
 import { PurchaseComponent } from './pages/purchase/purchase.component';
 import { CartComponent } from './pages/purchase/components/cart/cart.component';
+import { SnackbarService } from './services/snackbar.service';
+import { CartService } from './services/cart.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +22,11 @@ import { CartComponent } from './pages/purchase/components/cart/cart.component';
     DashboardComponent,
     PurchaseComponent,
     CartComponent,
+    SpinnerComponent,
+    
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule, BrowserAnimationsModule,HttpClientModule],
-  providers: [ApiService],
+  providers: [ApiService,SnackbarService,CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
