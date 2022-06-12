@@ -1,8 +1,9 @@
 <mat-toolbar>
   <span routerLink="/">E-commerce </span>
   <div class="cart">
-    <span class="cart-icon" routerLink="/cart">🛒</span>
-    <div class="quantityCircle">{{totals}}</div>
+    <mat-icon routerLink="/cart" matBadge="{{totals}}" matBadgeColor="primary">shopping_cart</mat-icon>
+    <!-- <span class="cart-icon" routerLink="/cart">🛒</span>
+    <div class="quantityCircle">{{totals}}</div> -->
   </div>
 
 </mat-toolbar>
