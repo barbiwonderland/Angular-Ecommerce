@@ -10,7 +10,10 @@ export class HeaderComponent implements OnInit {
   totals: any;
   constructor(private service: CartService) {}
 
-  ngOnInit(): void {
-    this.totals = this.service.getTotals().total;
+  ngOnInit() {
+    this.service.getiItem$().subscribe((res) => {
+      this.totals = res.reduce((acc, cur) => (acc = acc + cur.quantity),0);
+    });
+    console.log('totals', this.totals);
   }
 }
